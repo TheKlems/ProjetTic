@@ -1,0 +1,47 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<title>Thymio</title>
+		<script type=text/javascript src="{{
+  url_for('static', filename='jquery.js') }}"></script>
+	</head>
+	<body>
+
+	<h1>Thymio control interface</h1>
+		<a id=calculate>Caca</a>
+
+
+	<button id="caca">Gros caca</button>
+	</body>
+
+	<script type=text/javascript>
+	$(function() {
+	    $('button#caca').click(function() {
+	      $.getJSON('_add_numbers', {
+	        a: $('input[name="a"]').val(),
+	        b: $('input[name="b"]').val()
+	      }, function(data) {
+	        $("#result").text(data.result);
+	      });
+	      return false;
+	    });
+  	});
+
+	  $(function() {
+	    $('a#calculate').bind('click', function() {
+	      $.getJSON('_add_numbers', {
+	        a: $('input[name="a"]').val(),
+	        b: $('input[name="b"]').val()
+	      }, function(data) {
+	        $("#result").text(data.result);
+	      });
+	      return false;
+	    });
+	  });
+</script>
+<h1>jQuery Example</h1>
+<p><input type=text size=5 name=a> +
+   <input type=text size=5 name=b> =
+   <span id=result>?</span>
+<p><a href=# id=calculate>calculate server side</a>
+</html>
